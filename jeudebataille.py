@@ -57,17 +57,16 @@ class PaquetDeCarte:
         for i in range (26):
             uneCarte = unPaquet.getCarteAt(i)
             j_1.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
+        print(j_1)
+#         print(len(j_1))
         print("__________________")
         print("Paquet du joueur 2")
-        print("__________________")
-        j_1 = tmp
-        tmp = j_2
-        j_1 = j_2  
-        for i in range (26):
+        print("__________________") 
+        for i in range (26,52):
             uneCarte = unPaquet.getCarteAt(i) 
             j_2.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-        print (j_1)
         print (j_2)
+#         print(len(j_2))
         print("__________________")
     # Distribution des 52 cartes aléatoires
 # for i in range(52):
@@ -78,7 +77,7 @@ class PaquetDeCarte:
         Permet de tirer la carte se trouvant aux sommet du paquet
         de chauque joueur
     """
-#     def tirerUneCarte():
+#    def tirerUneCarte():
 
 
 
@@ -89,5 +88,7 @@ unPaquet.melanger()
 j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
 unPaquet.distribuer()
+print(type(j_1)) 
    
     
+
