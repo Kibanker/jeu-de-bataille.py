@@ -2,8 +2,6 @@ import random
 
 class Carte:
     """Initialise Couleur (entre 1 à 4), et Valeur (entre 1 à 13)"""
-    
-    
     def __init__(self, c, v):
         assert (c > 0 and c < 5)
         assert (v > 0 and v < 14)
@@ -24,11 +22,13 @@ class Carte:
         else:
             return "As"
 
-    """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle"""
+    """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle)"""
     def getCouleur(self):
         return ['pique', 'coeur', 'carreau', 'trefle'][self.Couleur-1]   # ATTENTION ! problème d'indice !
 
 class PaquetDeCarte:
+    
+    
     def __init__(self):
         self.contenu = []
 
@@ -42,28 +42,52 @@ class PaquetDeCarte:
     def getCarteAt(self, pos):
         assert pos < len(self.contenu)+1
         return self.contenu[pos-1]
-            
-    def hasard(self):
-        randomNom = random.randint(1, 15)
-        randomCouleur = random.randint(1, 5)
     
+    """Melange l'ensemble des cartes"""
     def melanger(self):
-        random.shuffle(self.contenu)
-        
+       random.shuffle(self.contenu) 
+    
+    """Distribue deux paquets de 26 cartes differentes aux deux joueurs"""
     def distribuer(self):
-        for i in range(26):
-            
-
-            
-        
-        
-        
-unPaquet = PaquetDeCarte()
-unPaquet.remplir()
-unPaquet.melanger()
+        j_1 = []
+        j_2 = []
+        print("__________________")
+        print("Paquet du joueur 1")
+        print("__________________")
+        for i in range (26):
+            uneCarte = unPaquet.getCarteAt(i)
+            j_1.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
+        print("__________________")
+        print("Paquet du joueur 2")
+        print("__________________")
+        j_1 = tmp
+        tmp = j_2
+        j_1 = j_2  
+        for i in range (26):
+            uneCarte = unPaquet.getCarteAt(i) 
+            j_2.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
+        print (j_1)
+        print (j_2)
+        print("__________________")
+    # Distribution des 52 cartes aléatoires
 # for i in range(52):
 #     uneCarte = unPaquet.getCarteAt(i)
 #     print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-jeu1 = PaquetDeCarte()
-jeu2 = PaquetDeCarte()
 
+    """
+        Permet de tirer la carte se trouvant aux sommet du paquet
+        de chauque joueur
+    """
+#     def tirerUneCarte():
+
+
+
+     
+unPaquet = PaquetDeCarte()
+unPaquet.remplir()
+unPaquet.melanger()
+j_1 = PaquetDeCarte()
+j_2 = PaquetDeCarte()
+unPaquet.distribuer()
+   
+    
