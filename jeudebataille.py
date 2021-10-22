@@ -89,6 +89,4 @@ j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
 unPaquet.distribuer()
 print(type(j_1)) 
-   
-    
-
+  
