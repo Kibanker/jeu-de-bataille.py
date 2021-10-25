@@ -47,10 +47,10 @@ class PaquetDeCarte:
     def melanger(self):
         random.shuffle(self.contenu) 
     
-    """Distribue deux paquets de 26 cartes differentes aux deux joueurs"""
+#     """Distribue deux paquets de 26 cartes differentes aux deux joueurs"""
 #     def distribuer(self):
-#         self.j_1 = []
-#         self.j_2 = []
+# #         self.j_1 = [] #crée liste joueur 1
+# #         self.j_2 = [] #crée liste joueur 2
 #         print("__________________")
 #         print("Paquet du joueur 1")
 #         print("__________________")
@@ -68,38 +68,33 @@ class PaquetDeCarte:
 #         print(self.j_2)
 # #         print(len(j_2))
 #         print("__________________")
-    # Distribution des 52 cartes aléatoires
-# for i in range(52):
-#     uneCarte = unPaquet.getCarteAt(i)
-#     print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
+#     # Distribution des 52 cartes aléatoires
+# # for i in range(52):
+# #     uneCarte = unPaquet.getCarteAt(i)
+# #     print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
 
     """
         Permet de tirer la carte se trouvant aux sommet du paquet
-        de chauque joueur
+        de chaque joueur
     """
     def tirerUneCarte(self):
-#         for i in range(1,27):
-#             uneCarte = unPaquet.getCarteAt(i)
-#             self.append(self.contenu[-1])
-        carte = self.contenu[-1]
-        self.contenu.pop()
+#         for i in range(1, 27):
+            carte = self.contenu[-1]
+            self.contenu.pop()
         return carte
+#         for i in range(27, 53):
+#             j_2 = self.contenu[-1]
+#             self.contenu.pop()
+#         return j_2
 
-    """ Ajoute la derniere carte jouée en dessous de la file du gagnant"""
     def ajouterCarte(self, carte):
         self.contenu.append(carte)
         
-    """Retourne le nombre de cartes de chaque jouer"""
-#     def taille(self):
-#         print("Nombre de carte dans j_1")
-#         print("__________________")
-#         print(len(self.j_1))
-#         print("__________________")
-#         print("Nombre de carte dans j_2")
-#         print("__________________")
-#         print(len(self.j_2))
-#         print("__________________")
-#         
+#     def estVide(self):
+
+    def taille(self):
+        print(len(self.j_1))
+        print(len(self.j_2))
     
 
 
@@ -110,28 +105,25 @@ unPaquet.remplir()
 unPaquet.melanger()
 j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
-for i in range (1,26):
-    uneCarte = j_1.getCarteAt(i)
-    print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-print ("_____________________________________________________________")     
-for i in range (27,53):
-    uneCarte = j_2.getCarteAt(i) 
-    print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-
-     
+for i in range(1, 27):
+    carte = paquetcarte.tirer_carte(i)
+    j1.ajouter(carte)
     
-unPaquet.tirerUneCarte()
-# unPaquet.taille()
-# j_1.
+
+########
+# distribuer
+# 
+# pour les cartes allant de 1 à 26 :
+#     tirer une carte de paquet et la mettre dans j1
+#     
+# pour les cartes allant de 1 à 26 :
+#     tirer une carte de paquet et la mettre dans j2
+#####
 
 
 
 
    
-    
-
-
-
     
 
 
