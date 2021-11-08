@@ -91,7 +91,7 @@ class PaquetDeCarte:
         self.contenu.append(carte)
         
     def estVide(self):
-        
+        return (self.contenu == [])
 
     def taille(self):
         return len(self.contenu)
@@ -102,6 +102,7 @@ unPaquet.remplir()
 unPaquet.melanger()
 j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
+temp = PaquetDeCarte()
 for i in range(0, 26):
     carte = unPaquet.tirerUneCarte()
     j_1.ajouterCarte(carte)
@@ -110,16 +111,58 @@ for i in range(0, 26):
     carte = unPaquet.tirerUneCarte()
     j_2.ajouterCarte(carte)
     
-print(j_1.taille())
-print(j_2.taille())
+# print(j_1.taille())
+# print(j_2.taille())
 
 # for i in range(26):    
 #     uneCarte = j_1.getCarteAt(i)
-#     print("j1 : "+uneCarte.getNom() + " de " + uneCarte.getCouleur())
+#     print("j1 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
 #     
 # for i in range(26):    
 #     uneCarte = j_2.getCarteAt(i)
-#     print("j2 : "+uneCarte.getNom() + " de " + uneCarte.getCouleur())
+#     print("j2 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
+
+
+
+while j_1 != estVide() or j_2 != estVide():
+    cartej_1 = j_1.tirerUneCarte()
+    temp.ajouterCarte(cartej_1)
+    cartej_2 = j_2.tirerUneCarte()
+    temp.ajouterCarte(cartej_2)
+# print(temp)
+    
+    
+    
+    
+
+# Algorithme de la bataille
+# tant que le jeu 1 n’est pas vide ou le jeu 2 n’est pas vide faire
+# 	Prendre la carte du dessus du jeu 1 et la retourner.  
+# 	Mettre cette carte sur le dessus de la pile de bataille 1
+# 	Prendre la carte du dessus du jeu 2 et la retourner
+# 	Mettre cette carte sur le dessus de la pile de bataille 2
+# 	tant que les 2 cartes du dessus des piles de bataille sont  égales faire
+# 		Prendre la carte du dessus du jeu 1
+# 		Mettre cette carte face cachée sur le dessus de la pile de bataille 1
+# 		Prendre la carte du dessus du jeu 1 et la retourner face visible
+# 		Mettre cette carte sur le dessus de la pile de bataille 1
+# 		Prendre la carte du dessus du jeu 2
+# 		Mettre cette carte face cachée sur le dessus de la pile de bataille 2
+# 		Prendre la carte du dessus du jeu 2 et la retourner face visible
+# 		Mettre cette carte sur le dessus de la pile de bataille 2
+# 	fin tant que
+# 	Joueur gagnant ce tour : celui qui a la plus forte carte en sommet de pile de bataille
+# 	tant que la pile de bataille 1 n’est pas vide faire
+# 		Prendre la carte sur le dessus de la pile de bataille 1
+# 		La glisser face cachée sous le paquet du gagnant
+# 	fin tant que
+# 	tant que la pile de bataille 2 n’est pas vide faire
+# 		Prendre la carte sur le dessus de la pile de bataille 2
+# 		La glisser sous le paquet du gagnant
+# 	fin tant que
+# fin tant que
+# Le gagnant est celui qui a toutes les cartes dans son jeu
+
 
 
 
