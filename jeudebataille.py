@@ -81,7 +81,7 @@ class PaquetDeCarte:
 #         for i in range(1, 27):
             carte = self.contenu[-1]
             self.contenu.pop()
-        return carte
+            return carte
 #         for i in range(27, 53):
 #             j_2 = self.contenu[-1]
 #             self.contenu.pop()
@@ -90,26 +90,41 @@ class PaquetDeCarte:
     def ajouterCarte(self, carte):
         self.contenu.append(carte)
         
-#     def estVide(self):
+    def estVide(self):
+        
 
     def taille(self):
-        print(len(self.j_1))
-        print(len(self.j_2))
-    
-
-
-
+        return len(self.contenu)
+        
      
 unPaquet = PaquetDeCarte()
 unPaquet.remplir()
 unPaquet.melanger()
 j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
-for i in range(1, 27):
-    carte = paquetcarte.tirer_carte(i)
-    j1.ajouter(carte)
+for i in range(0, 26):
+    carte = unPaquet.tirerUneCarte()
+    j_1.ajouterCarte(carte)
     
+for i in range(0, 26):
+    carte = unPaquet.tirerUneCarte()
+    j_2.ajouterCarte(carte)
+    
+print(j_1.taille())
+print(j_2.taille())
 
+# for i in range(26):    
+#     uneCarte = j_1.getCarteAt(i)
+#     print("j1 : "+uneCarte.getNom() + " de " + uneCarte.getCouleur())
+#     
+# for i in range(26):    
+#     uneCarte = j_2.getCarteAt(i)
+#     print("j2 : "+uneCarte.getNom() + " de " + uneCarte.getCouleur())
+
+
+
+
+    
 ########
 # distribuer
 # 
