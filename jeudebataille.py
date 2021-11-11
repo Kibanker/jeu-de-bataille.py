@@ -92,6 +92,8 @@ class PaquetDeCarte:
         
     def estVide(self):
         return (self.contenu == [])
+        
+                        
 
     def taille(self):
         return len(self.contenu)
@@ -105,8 +107,7 @@ j_2 = PaquetDeCarte()
 temp = PaquetDeCarte()
 for i in range(0, 26):
     carte = unPaquet.tirerUneCarte()
-    j_1.ajouterCarte(carte)
-    
+    j_1.ajouterCarte(carte)   
 for i in range(0, 26):
     carte = unPaquet.tirerUneCarte()
     j_2.ajouterCarte(carte)
@@ -116,20 +117,19 @@ for i in range(0, 26):
 
 # for i in range(26):    
 #     uneCarte = j_1.getCarteAt(i)
-#     print("j1 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
-#     
+#     print("j1 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())   
 # for i in range(26):    
 #     uneCarte = j_2.getCarteAt(i)
 #     print("j2 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
 
 
 
-while j_1 != estVide() or j_2 != estVide():
+while j_1.estVide() != True or j_2.estVide() != True:
     cartej_1 = j_1.tirerUneCarte()
     temp.ajouterCarte(cartej_1)
     cartej_2 = j_2.tirerUneCarte()
     temp.ajouterCarte(cartej_2)
-# print(temp)
+print(temp)
     
     
     
@@ -183,5 +183,6 @@ while j_1 != estVide() or j_2 != estVide():
 
    
     
+
 
 
