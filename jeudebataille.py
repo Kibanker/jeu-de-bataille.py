@@ -1,4 +1,5 @@
 import random
+import tkinter as tk
 
 class Carte:
     """Initialise Couleur (entre 1 à 4), et Valeur (entre 1 à 13)"""
@@ -19,7 +20,7 @@ class Carte:
             return "Dame"
         elif self.Valeur == 13:
             return "Roi"
-        else:
+        elif self.Valeur == 14:
             return "As"
 
     """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle)"""
@@ -78,25 +79,31 @@ class PaquetDeCarte:
         de chaque joueur
     """
     def tirerUneCarte(self):
-#         for i in range(1, 27):
-            carte = self.contenu[-1]
-            self.contenu.pop()
-            return carte
-#         for i in range(27, 53):
-#             j_2 = self.contenu[-1]
-#             self.contenu.pop()
-#         return j_2
+        carte = self.contenu[-1]
+        self.contenu.pop()
+        return carte
 
     def ajouterCarte(self, carte):
         self.contenu.append(carte)
+        return carte
         
     def estVide(self):
-        return (self.contenu == [])
-        
-                        
+        return (self.contenu == [])                       
 
     def taille(self):
         return len(self.contenu)
+    
+    def image(self) :
+        """
+        méthode permettant l'affichage d'une carte"
+        """
+        fichier = "modele_cartes/"+ str(self.hauteur) + self.couleur + ".GIF"
+        fenetre = tk.Tk()
+        #fenetre.geometry ("935 x 692 ")
+        image_carte = tk.PhotoImage(file = fichier)
+        label = tk.Label (fenetre, image = image_carte)
+        label.pack()
+        fenetre.mainloop()
         
      
 unPaquet = PaquetDeCarte()
@@ -129,7 +136,28 @@ while j_1.estVide() != True or j_2.estVide() != True:
     temp.ajouterCarte(cartej_1)
     cartej_2 = j_2.tirerUneCarte()
     temp.ajouterCarte(cartej_2)
-print(temp)
+    while cartej_1.getNom() == cartej_2.getNom():
+        cartej_1 = j_1.tirerUneCarte()
+        temp.ajouterCarte(cartej_1)
+        cartej_2 = j_2.tirerUneCarte()
+        temp.ajouterCarte(cartej_2)
+    if (cartej_1.getNom() > cartej_2.getNom()):
+        while j_1.estVide() != True:
+            j_1.ajouterCarte(cartej_1)
+            j_1.ajouterCarte(cartej_2)
+    elif (cartej_1.getNom() < cartej_2.getNom()):
+        while j_2.estVide() != True:
+            j_2.ajouterCarte(cartej_1)
+            j_2.ajouterCarte(cartej_2)
+if (j_1.taille() == 52):
+    print("Le joueur 1 a gagné")
+else:
+    print("Le joueur 2 a gagné")
+        
+            
+        
+        
+
     
     
     
@@ -176,13 +204,4 @@ print(temp)
 #     
 # pour les cartes allant de 1 à 26 :
 #     tirer une carte de paquet et la mettre dans j2
-#####
-
-
-
-
-   
-    
-
-
-
+###
