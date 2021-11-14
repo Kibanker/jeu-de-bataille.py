@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 
 class Carte:
+    
     """Initialise Couleur (entre 1 à 4), et Valeur (entre 1 à 13)"""
     def __init__(self, c, v):
         assert (c > 0 and c < 5)
@@ -58,34 +59,8 @@ class PaquetDeCarte:
     
     """Melange l'ensemble des cartes"""
     def melanger(self):
-        random.shuffle(self.contenu) 
-    
-#     """Distribue deux paquets de 26 cartes differentes aux deux joueurs"""
-#     def distribuer(self):
-# #         self.j_1 = [] #crée liste joueur 1
-# #         self.j_2 = [] #crée liste joueur 2
-#         print("__________________")
-#         print("Paquet du joueur 1")
-#         print("__________________")
-#         for i in range (26):
-#             uneCarte = unPaquet.getCarteAt(i)
-#             self.j_1.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-#         print(self.j_1)
-# #         print(len(j_1))
-#         print("__________________")
-#         print("Paquet du joueur 2")
-#         print("__________________") 
-#         for i in range (26,52):
-#             uneCarte = unPaquet.getCarteAt(i) 
-#             self.j_2.append(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-#         print(self.j_2)
-# #         print(len(j_2))
-#         print("__________________")
-#     # Distribution des 52 cartes aléatoires
-# # for i in range(52):
-# #     uneCarte = unPaquet.getCarteAt(i)
-# #     print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
-
+        random.shuffle(self.contenu)
+        
     """
         Permet de tirer la carte se trouvant aux sommet du paquet
         de chaque joueur
@@ -105,6 +80,21 @@ class PaquetDeCarte:
     def taille(self):
         return len(self.contenu)
     
+class Bataille:
+    
+#     def __init__(self):
+    
+    def affrontement(self, carte1, carte2):
+        if (self.Valeur(carte1) > self.Valeur(carte2)):
+            return "Joueur 1 gagne"
+        elif (self.Valeur(carte1) == self.Valeur(carte2)):
+            return "Egalité"
+        else:
+            return "Joueur 2 gagne"
+        
+        
+        
+    
 
 unPaquet = PaquetDeCarte()
 unPaquet.remplir()
@@ -112,6 +102,7 @@ unPaquet.melanger()
 j_1 = PaquetDeCarte()
 j_2 = PaquetDeCarte()
 temp = PaquetDeCarte()
+bat = Bataille()
 for i in range(0, 26):
     carte = unPaquet.tirerUneCarte()
     j_1.ajouterCarte(carte)   
@@ -138,6 +129,7 @@ while j_1.estVide() == False or j_2.estVide() == False:
     temp.ajouterCarte(cartej_2)
 print(cartej_1.getNom() + " de " + cartej_1.getCouleur())
 print(cartej_2.getNom() + " de " + cartej_2.getCouleur())
+
 
     
     
