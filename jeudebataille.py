@@ -26,6 +26,18 @@ class Carte:
     """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle)"""
     def getCouleur(self):
         return ['pique', 'coeur', 'carreau', 'trefle'][self.Couleur-1]   # ATTENTION ! problème d'indice !
+    
+    def image(self) :
+        """
+        méthode permettant l'affichage d'une carte"
+        """
+        fichier = "modele_cartes/"+ str(self.Valeur) + self.couleur + ".GIF"
+        fenetre = tk.Tk()
+        #fenetre.geometry ("935 x 692 ")
+        image_carte = tk.PhotoImage(file = fichier)
+        label = tk.Label (fenetre, image = image_carte)
+        label.pack()
+        fenetre.mainloop()
 
 class PaquetDeCarte:
     
@@ -93,19 +105,7 @@ class PaquetDeCarte:
     def taille(self):
         return len(self.contenu)
     
-    def image(self) :
-        """
-        méthode permettant l'affichage d'une carte"
-        """
-        fichier = "modele_cartes/"+ str(self.hauteur) + self.couleur + ".GIF"
-        fenetre = tk.Tk()
-        #fenetre.geometry ("935 x 692 ")
-        image_carte = tk.PhotoImage(file = fichier)
-        label = tk.Label (fenetre, image = image_carte)
-        label.pack()
-        fenetre.mainloop()
-        
-     
+
 unPaquet = PaquetDeCarte()
 unPaquet.remplir()
 unPaquet.melanger()
@@ -131,28 +131,40 @@ for i in range(0, 26):
 
 
 
-while j_1.estVide() != True or j_2.estVide() != True:
+while j_1.estVide() == False or j_2.estVide() == False:
     cartej_1 = j_1.tirerUneCarte()
-    temp.ajouterCarte(cartej_1)
+    temp.ajouterCarte(cartej_1)    
     cartej_2 = j_2.tirerUneCarte()
     temp.ajouterCarte(cartej_2)
-    while cartej_1.getNom() == cartej_2.getNom():
-        cartej_1 = j_1.tirerUneCarte()
-        temp.ajouterCarte(cartej_1)
-        cartej_2 = j_2.tirerUneCarte()
-        temp.ajouterCarte(cartej_2)
-    if (cartej_1.getNom() > cartej_2.getNom()):
-        while j_1.estVide() != True:
-            j_1.ajouterCarte(cartej_1)
-            j_1.ajouterCarte(cartej_2)
-    elif (cartej_1.getNom() < cartej_2.getNom()):
-        while j_2.estVide() != True:
-            j_2.ajouterCarte(cartej_1)
-            j_2.ajouterCarte(cartej_2)
-if (j_1.taille() == 52):
-    print("Le joueur 1 a gagné")
-else:
-    print("Le joueur 2 a gagné")
+print(cartej_1.getNom() + " de " + cartej_1.getCouleur())
+print(cartej_2.getNom() + " de " + cartej_2.getCouleur())
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#     while cartej_1.getNom() == cartej_2.getNom():
+#         cartej_1 = j_1.tirerUneCarte()
+#         temp.ajouterCarte(cartej_1)
+#         cartej_2 = j_2.tirerUneCarte()
+#         temp.ajouterCarte(cartej_2)
+#     if (cartej_1.getNom() > cartej_2.getNom()):
+#         while j_1.estVide() != True:
+#             j_1.ajouterCarte(cartej_1)
+#             j_1.ajouterCarte(cartej_2)
+#     elif (cartej_1.getNom() < cartej_2.getNom()):
+#         while j_2.estVide() != True:
+#             j_2.ajouterCarte(cartej_1)
+#             j_2.ajouterCarte(cartej_2)
+# if (j_1.taille() == 52):
+#     print("Le joueur 1 a gagné")
+# else:
+#     print("Le joueur 2 a gagné")
         
             
         
@@ -190,18 +202,3 @@ else:
 # 	fin tant que
 # fin tant que
 # Le gagnant est celui qui a toutes les cartes dans son jeu
-
-
-
-
-
-    
-########
-# distribuer
-# 
-# pour les cartes allant de 1 à 26 :
-#     tirer une carte de paquet et la mettre dans j1
-#     
-# pour les cartes allant de 1 à 26 :
-#     tirer une carte de paquet et la mettre dans j2
-###
