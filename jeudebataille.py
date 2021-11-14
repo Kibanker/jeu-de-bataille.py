@@ -32,7 +32,7 @@ class Carte:
         """
         méthode permettant l'affichage d'une carte"
         """
-        fichier = "modele_cartes/"+ str(self.Valeur) + self.couleur + ".GIF"
+        fichier = "modele_cartes/"+ str(self.Valeur) + self.Couleur + ".GIF"
         fenetre = tk.Tk()
         #fenetre.geometry ("935 x 692 ")
         image_carte = tk.PhotoImage(file = fichier)
@@ -85,12 +85,12 @@ class Bataille:
 #     def __init__(self):
     
     def affrontement(self, carte1, carte2):
-        if (self.Valeur(carte1) > self.Valeur(carte2)):
-            return "Joueur 1 gagne"
-        elif (self.Valeur(carte1) == self.Valeur(carte2)):
-            return "Egalité"
+        if carte1.getNom() > carte2.getNom():
+            print("Joueur 1 gagne")
+        elif carte1.getNom() == carte2.getNom():
+            print("Egalité")
         else:
-            return "Joueur 2 gagne"
+            print("Joueur 2 gagne")
         
         
         
@@ -129,15 +129,7 @@ while j_1.estVide() == False or j_2.estVide() == False:
     temp.ajouterCarte(cartej_2)
 print(cartej_1.getNom() + " de " + cartej_1.getCouleur())
 print(cartej_2.getNom() + " de " + cartej_2.getCouleur())
-
-
-    
-    
-    
-    
-    
-    
-    
+bat.affrontement(cartej_1, cartej_2)  
     
     
 #     while cartej_1.getNom() == cartej_2.getNom():
@@ -194,3 +186,6 @@ print(cartej_2.getNom() + " de " + cartej_2.getCouleur())
 # 	fin tant que
 # fin tant que
 # Le gagnant est celui qui a toutes les cartes dans son jeu
+
+
+
