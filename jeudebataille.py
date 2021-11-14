@@ -80,36 +80,31 @@ class PaquetDeCarte:
     def taille(self):
         return len(self.contenu)
     
-class Bataille:
-    
-#     def __init__(self):
-    
-    def affrontement(self, carte1, carte2):
-        if (self.Valeur(carte1) > self.Valeur(carte2)):
-            return "Joueur 1 gagne"
-        elif (self.Valeur(carte1) == self.Valeur(carte2)):
-            return "Egalité"
-        else:
-            return "Joueur 2 gagne"
-        
-        
-        
-    
 
-unPaquet = PaquetDeCarte()
-unPaquet.remplir()
-unPaquet.melanger()
-j_1 = PaquetDeCarte()
-j_2 = PaquetDeCarte()
-temp = PaquetDeCarte()
-bat = Bataille()
-for i in range(0, 26):
-    carte = unPaquet.tirerUneCarte()
-    j_1.ajouterCarte(carte)   
-for i in range(0, 26):
-    carte = unPaquet.tirerUneCarte()
-    j_2.ajouterCarte(carte)
-    
+            
+            
+#J'ai refait:
+#-----------------------------------------------------------
+            
+class Bataille:
+    def __init__():
+        print("fuck la cité au comico les blazes j'ai cité")
+        
+    def legoumé(self):
+        UnPaquet = PaquetDeCarte()
+        UnPaquet.remplir()
+        j_1 = PaquetDecarte()
+        j_2 = PaquetDeCarte()
+        pli = PaquetDeCarte
+        for i in range(0, 26):
+            carte = unPaquet.tirerUneCarte()
+            j_1.ajouterCarte(carte)   
+        for i in range(0, 26):
+            carte = unPaquet.tirerUneCarte()
+            j_2.ajouterCarte(carte)
+            
+#------------------------------------------------------------
+            
 # print(j_1.taille())
 # print(j_2.taille())
 
