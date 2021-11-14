@@ -85,9 +85,9 @@ class Bataille:
 #     def __init__(self):
     
     def affrontement(self, carte1, carte2):
-        if carte1.getNom() > carte2.getNom():
+        if carte1.Valeur > carte2.Valeur:
             print("Joueur 1 gagne")
-        elif carte1.getNom() == carte2.getNom():
+        elif carte1.Valeur == carte2.Valeur:
             print("Egalité")
         else:
             print("Joueur 2 gagne")
@@ -120,18 +120,36 @@ for i in range(0, 26):
 #     uneCarte = j_2.getCarteAt(i)
 #     print("j2 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
 
-
-
-while j_1.estVide() == False or j_2.estVide() == False:
+while not j_1.estVide() or not j_2.estVide():
     cartej_1 = j_1.tirerUneCarte()
     temp.ajouterCarte(cartej_1)    
     cartej_2 = j_2.tirerUneCarte()
     temp.ajouterCarte(cartej_2)
-print(cartej_1.getNom() + " de " + cartej_1.getCouleur())
-print(cartej_2.getNom() + " de " + cartej_2.getCouleur())
-bat.affrontement(cartej_1, cartej_2)  
+    print(cartej_1.getNom() , " de " , cartej_1.getCouleur())
+    print(cartej_2.getNom() , " de " , cartej_2.getCouleur())
+    bat.affrontement(cartej_1, cartej_2)
+    print("carte du joueur 1 :",j_1.taille())
+    print("carte du joueur 2 :",j_2.taille())
+
     
-    
+    while j_1 == j_2:
+        cartej_1 = j_1.tirerUneCarte()
+        temp.ajouterCarte(cartej_1)
+        temp.ajouterCarte(cartej_1)
+        cartej_2 = j_2.tirerUneCarte()
+        temp.ajouterCarte(cartej_2)
+        temp.ajouterCarte(cartej_2)
+        print(cartej_1.getNom() , " de " , cartej_1.getCouleur())
+        print(cartej_2.getNom() , " de " , cartej_2.getCouleur())
+        bat.affrontement(cartej_1, cartej_2) 
+#     while not j_1.estVide() :
+#     
+#     while not j_2.estVide() :
+
+if j_1.estVide():
+    print("Joueur 2 est notre gagnant")
+else:
+    print("Joueur 1 est notre gagnant")
 #     while cartej_1.getNom() == cartej_2.getNom():
 #         cartej_1 = j_1.tirerUneCarte()
 #         temp.ajouterCarte(cartej_1)
@@ -161,29 +179,29 @@ bat.affrontement(cartej_1, cartej_2)
 
 # Algorithme de la bataille
 # tant que le jeu 1 n’est pas vide ou le jeu 2 n’est pas vide faire
-# 	Prendre la carte du dessus du jeu 1 et la retourner.  
-# 	Mettre cette carte sur le dessus de la pile de bataille 1
-# 	Prendre la carte du dessus du jeu 2 et la retourner
-# 	Mettre cette carte sur le dessus de la pile de bataille 2
-# 	tant que les 2 cartes du dessus des piles de bataille sont  égales faire
-# 		Prendre la carte du dessus du jeu 1
-# 		Mettre cette carte face cachée sur le dessus de la pile de bataille 1
-# 		Prendre la carte du dessus du jeu 1 et la retourner face visible
-# 		Mettre cette carte sur le dessus de la pile de bataille 1
-# 		Prendre la carte du dessus du jeu 2
-# 		Mettre cette carte face cachée sur le dessus de la pile de bataille 2
-# 		Prendre la carte du dessus du jeu 2 et la retourner face visible
-# 		Mettre cette carte sur le dessus de la pile de bataille 2
-# 	fin tant que
-# 	Joueur gagnant ce tour : celui qui a la plus forte carte en sommet de pile de bataille
-# 	tant que la pile de bataille 1 n’est pas vide faire
-# 		Prendre la carte sur le dessus de la pile de bataille 1
-# 		La glisser face cachée sous le paquet du gagnant
-# 	fin tant que
-# 	tant que la pile de bataille 2 n’est pas vide faire
-# 		Prendre la carte sur le dessus de la pile de bataille 2
-# 		La glisser sous le paquet du gagnant
-# 	fin tant que
+#   Prendre la carte du dessus du jeu 1 et la retourner.  
+#   Mettre cette carte sur le dessus de la pile de bataille 1
+#   Prendre la carte du dessus du jeu 2 et la retourner
+#   Mettre cette carte sur le dessus de la pile de bataille 2
+#   tant que les 2 cartes du dessus des piles de bataille sont  égales faire
+#       Prendre la carte du dessus du jeu 1
+#       Mettre cette carte face cachée sur le dessus de la pile de bataille 1
+#       Prendre la carte du dessus du jeu 1 et la retourner face visible
+#       Mettre cette carte sur le dessus de la pile de bataille 1
+#       Prendre la carte du dessus du jeu 2
+#       Mettre cette carte face cachée sur le dessus de la pile de bataille 2
+#       Prendre la carte du dessus du jeu 2 et la retourner face visible
+#       Mettre cette carte sur le dessus de la pile de bataille 2
+#   fin tant que
+#   Joueur gagnant ce tour : celui qui a la plus forte carte en sommet de pile de bataille
+#   tant que la pile de bataille 1 n’est pas vide faire
+#       Prendre la carte sur le dessus de la pile de bataille 1
+#       La glisser face cachée sous le paquet du gagnant
+#   fin tant que
+#   tant que la pile de bataille 2 n’est pas vide faire
+#       Prendre la carte sur le dessus de la pile de bataille 2
+#       La glisser sous le paquet du gagnant
+#   fin tant que
 # fin tant que
 # Le gagnant est celui qui a toutes les cartes dans son jeu
 
