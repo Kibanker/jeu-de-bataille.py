@@ -1,3 +1,4 @@
+#Jeu de la Bataille Noa VINCENT et Mathys LEFI
 import random
 import tkinter as tk
 
@@ -30,11 +31,11 @@ class Carte:
     
     def image(self) :
         """
-        méthode permettant l'affichage d'une carte"
+        méthode permettant l'affichage d'une carte
         """
         fichier = "modele_cartes/"+ str(self.Valeur) + self.Couleur + ".GIF"
         fenetre = tk.Tk()
-        #fenetre.geometry ("935 x 692 ")
+        fenetre.geometry ("935 x 692 ")
         image_carte = tk.PhotoImage(file = fichier)
         label = tk.Label (fenetre, image = image_carte)
         label.pack()
@@ -42,7 +43,7 @@ class Carte:
 
 class PaquetDeCarte:
     
-    
+    """ Initialise un contenu vide """
     def __init__(self):
         self.contenu = []
 
@@ -69,20 +70,31 @@ class PaquetDeCarte:
         carte = self.contenu[-1]
         self.contenu.pop()
         return carte
-
+    """
+        Ajoute une carte au paquet concerné
+    """
     def ajouterCarte(self, carte):
         self.contenu.append(carte)
         return carte
-        
+    """
+        Renvoie True si le paquet est vide et False si il ne l'est pas
+    """
     def estVide(self):
         return (self.contenu == [])                       
-
+    """
+        Renvoie la taille du paquet
+    """
     def taille(self):
         return len(self.contenu)
     
 class Bataille:
     
 #     def __init__(self):
+    """
+        Compare les cartes du joueur 1 et du joueur 2
+        Renvoie le joueur ayant la carte avec la valeur la plus haute
+        Si les deux cartes sont les mêmes renvoie une égalitée
+    """
     
     def affrontement(self, carte1, carte2):
         if carte1.Valeur > carte2.Valeur:
@@ -120,36 +132,62 @@ for i in range(0, 26):
 #     uneCarte = j_2.getCarteAt(i)
 #     print("j2 : " + uneCarte.getNom() + " de " + uneCarte.getCouleur())
 
-while not j_1.estVide() or not j_2.estVide():
-    cartej_1 = j_1.tirerUneCarte()
-    temp.ajouterCarte(cartej_1)    
-    cartej_2 = j_2.tirerUneCarte()
-    temp.ajouterCarte(cartej_2)
+while not j_1.estVide() or not j_2.estVide():         # tant que le jeu 1 n’est pas vide ou le jeu 2 n’est pas vide faire
+    cartej_1 = j_1.tirerUneCarte() #   Prendre la carte du dessus du jeu 1 et la retourner. 
+    temp.ajouterCarte(cartej_1)    #   Mettre cette carte sur le dessus de la pile de bataille 1
+    cartej_2 = j_2.tirerUneCarte() #   Prendre la carte du dessus du jeu 2 et la retourner
+    temp.ajouterCarte(cartej_2)    #   Mettre cette carte sur le dessus de la pile de bataille 2
     print(cartej_1.getNom() , " de " , cartej_1.getCouleur())
     print(cartej_2.getNom() , " de " , cartej_2.getCouleur())
-    bat.affrontement(cartej_1, cartej_2)
+    bat.affrontement(cartej_1, cartej_2)# Compare les cartes j1 et j2 
     print("carte du joueur 1 :",j_1.taille())
     print("carte du joueur 2 :",j_2.taille())
 
     
-    while j_1 == j_2:
-        cartej_1 = j_1.tirerUneCarte()
-        temp.ajouterCarte(cartej_1)
-        temp.ajouterCarte(cartej_1)
-        cartej_2 = j_2.tirerUneCarte()
-        temp.ajouterCarte(cartej_2)
-        temp.ajouterCarte(cartej_2)
-        print(cartej_1.getNom() , " de " , cartej_1.getCouleur())
-        print(cartej_2.getNom() , " de " , cartej_2.getCouleur())
-        bat.affrontement(cartej_1, cartej_2) 
-#     while not j_1.estVide() :
-#     
-#     while not j_2.estVide() :
+    while j_1 == j_2:     #   tant que les 2 cartes du dessus des piles de bataille sont  égales faire
+        cartej_1 = j_1.tirerUneCarte()#   Prendre la carte du dessus du jeu 1
 
-if j_1.estVide():
-    print("Joueur 2 est notre gagnant")
+
+        temp.ajouterCarte(cartej_1)#       Mettre cette carte face cachée sur le dessus de la pile de bataille 1
+        temp.ajouterCarte(cartej_1)#       Prendre la carte du dessus du jeu 1 et la retourner face visible
+        cartej_2 = j_2.tirerUneCarte()#       Prendre la carte du dessus du jeu 2
+        temp.ajouterCarte(cartej_2)#       Mettre cette carte face cachée sur le dessus de la pile de bataille 2
+        temp.ajouterCarte(cartej_2)#       Prendre la carte du dessus du jeu 2 et la retourner face visible
+        print(cartej_1.getNom() , " de " , cartej_1.getCouleur())#       Mettre cette carte sur le dessus de la pile de bataille 1
+        print(cartej_2.getNom() , " de " , cartej_2.getCouleur())#       Mettre cette carte sur le dessus de la pile de bataille 2
+        bat.affrontement(cartej_1, cartej_2) # Compare les cartes j1 et j2 
+
+#     while not j_1.estVide() :
+#         if :
+#             cartej_1 = j_1.tirerUneCarte()
+#             temp.ajouterCarte(cartej_1)
+#             t = temp
+#             j_1 = j_1 + t
+        
+    
+#     while not j_2.estVide() :
+#         if bat.affrontement(cartej_1,cartej_2) == cartej_2:
+#             cartej_2 = j_2.tirerUneCarte()
+#             temp.ajouterCarte(cartej_2)
+#             t = temp
+#             j_2 = j_2 + t
+
+
+
+if j_1.estVide(): # Le gagnant est celui qui a toutes les cartes dans son jeu
+    print("Joueur 2 est notre grand gagnant") 
 else:
-    print("Joueur 1 est notre gagnant")
+    print("Joueur 1 est notre grand gagnant")
+
+
+
+
+
+
+
+
+
+
 #     while cartej_1.getNom() == cartej_2.getNom():
 #         cartej_1 = j_1.tirerUneCarte()
 #         temp.ajouterCarte(cartej_1)
